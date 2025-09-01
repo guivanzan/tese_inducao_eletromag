@@ -23,7 +23,7 @@ with tab1:
         
 
 with tab2:
-    label = st.selectbox('Selecione o dado que deseja utilizar',['Tomada desconectada','Carregador de celular','Ventilador'],index=None,placeholder='    ')
+    label = st.selectbox('Selecione o dado que deseja utilizar',['Tomada desconectada','Carregador de celular','Ventilador','Onda quadrada'],index=None,placeholder='    ')
     if label:
         if label == 'Tomada desconectada':
 
@@ -43,5 +43,11 @@ with tab2:
             dado = dado['measures'].to_list()
             makePlot(dado)
             
+        if label == 'Onda quadrada':
+
+            dado = pd.read_csv('./pre_made/dado_quadrado.txt',header=None,names=['measures'])
+            dado = dado['measures'].to_list()
+            makePlot(dado)
+
 with tab3:
     st.markdown('Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum')
