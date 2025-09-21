@@ -124,26 +124,27 @@ with tab3:
 
         # Plot do sinal no tempo com Plotly
         fig1 = go.Figure()
-        fig1.add_trace(go.Scatter(x=t[:512], y=x[:512], mode='lines', name='Sinal'))
+        fig1.add_trace(go.Scatter(x=x[:512], y=t[:512], mode='lines', name='Sinal',marker_color="black"))
         fig1.update_layout(
         title='Sinal no domínio do tempo (trecho)',
-        xaxis_title='Tempo (s)',
-        yaxis_title='Amplitude',
+        xaxis_title='Amplitude',
+        yaxis_title='Tempo (s)',
+        yaxis=dict(autorange='reversed'),
         template='plotly_white',
-        height=300
+        height=1200
         )
         st.plotly_chart(fig1, use_container_width=True, key=randint(1,1000000))
 
 
         # Plot do espectro (magnitude) com Plotly
         fig2 = go.Figure()
-        fig2.add_trace(go.Scatter(x=freqs_pos, y=np.abs(X_pos) / N, mode='lines', name='Magnitude'))
+        fig2.add_trace(go.Scatter(x=np.abs(X_pos) / N, y=freqs_pos, mode='lines', name='Magnitude',marker_color="black"))
         fig2.update_layout(
         title='Espectro obtido pela FFT (magnitude)',
-        xaxis_title='Frequência (Hz)',
-        yaxis_title='Magnitude',
-        xaxis_range=[0, 300],
+        xaxis_title='Intensidade',
+        yaxis_title='Frequência (Hz)',
+        yaxis=dict(autorange='reversed'),
         template='plotly_white',
-        height=300
+        height=1200
         )
         st.plotly_chart(fig2, use_container_width=True, key = randint(1,10000000))
